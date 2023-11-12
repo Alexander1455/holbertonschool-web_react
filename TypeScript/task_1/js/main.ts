@@ -7,19 +7,18 @@ interface Teacher {
   [key: string]: string | number | boolean | undefined; // Allow any additional attribute
 }
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
-
-console.log(teacher3);
-
 interface Directors extends Teacher {
   numberOfReports: number;
 }
+
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
+  const firstLetter = firstName.charAt(0);
+  return `${firstLetter}. ${lastName}`;
+};
 
 const director1: Directors = {
   firstName: 'John',
@@ -30,3 +29,6 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
+const printedTeacher = printTeacher("John", "Doe");
+console.log(printedTeacher);
