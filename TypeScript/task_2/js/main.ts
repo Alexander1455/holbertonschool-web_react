@@ -65,3 +65,19 @@ interface DirectorInterface {
       console.log(employee.workTeacherTasks());
     }
   }
+
+// String literal type for Subjects
+type Subjects = 'Math' | 'History';
+
+// Function to teach a class based on the todayClass
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  } else if (todayClass === 'History') {
+    return 'Teaching History';
+  } else {
+    // This branch is not necessary if Subjects is properly defined
+    const assertNever: never = todayClass;
+    return assertNever; // Ensure exhaustive checking
+  }
+}
